@@ -41,7 +41,7 @@ public class HomepageTest extends BaseTest {
     }
 
 
-    @Test(priority = 1)
+    @Test
     public void checkMousedOverItemsColorTest (){
 
         printTestStart();
@@ -130,7 +130,7 @@ Check Bingo item
         sAssert.assertAll();
     }
 
-    @Test()
+    @Test(priority = 1)
     public void CheckingThemesTest() {
         printTestStart();
 

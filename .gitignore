@@ -24,3 +24,14 @@ buildNumber.properties
 .idea/uiDesigner.xml
 .idea/misc.xml
 .idea/jarRepositories.xml
+*.jar
+*.bat
+*.yml
+*.properties
+.allure/allure-2.8.1/bin/allure
+*.js
+*.svg
+*.css
+.allure/allure-2.8.1/plugins/README.txt
+*.log
+testng.xml

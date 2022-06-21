@@ -2,18 +2,25 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="Bingo">
     <test verbose="2" preserve-order="true" name="on Chrome browser">
+        <parameter name="browserName" value="mozilla"></parameter>
         <classes>
             <class name="homePage.HomepageTest">
-
+                <methods>
+                    <include name="checkMousedOverItemsColorTest"/>
+                    <include name="CheckingThemesTest"/>
+                </methods>
             </class>
         </classes>
     </test>
 
     <test verbose="2" preserve-order="true" name="on Firefox browser">
-        <parameter name="browserName" value="mozilla"></parameter>
+        <parameter name="browserName" value="chrome"></parameter>
         <classes>
             <class name="homePage.HomepageTest">
-
+                <methods>
+                    <include name="CheckingThemesTest"/>
+                    <include name="checkMousedOverItemsColorTest"/>
+                </methods>
             </class>
         </classes>
     </test>

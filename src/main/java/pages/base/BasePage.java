@@ -50,7 +50,7 @@ public class BasePage {
     public void mouseHover(By by) {
         Actions builder = new Actions(driver);
         WebElement el = driver.findElement(by);
-        builder.moveToElement(el).pause(100).build().perform();
+        builder.moveToElement(el).pause(300).build().perform();
 
     }
 

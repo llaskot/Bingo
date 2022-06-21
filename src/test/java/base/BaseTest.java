@@ -8,10 +8,7 @@ import pages.base.BasePage;
 import pages.bingo.BingoPage;
 import pages.home.HomepagePage;
 import common.CommonActions;
-//import pages.authentication.AuthenticationPage;
-
 import static common.Config.*;
-import static constants.Constant.Urls.*;
 
 
 public class BaseTest {
@@ -23,7 +20,7 @@ public class BaseTest {
 
     @BeforeTest
     @Parameters({"browserName"})
-    public void selectBrowser(@Optional("chrome") String browserName) {
+    public void selectBrowser(@Optional("mozilla") String browserName) {
         PLATFORM_AND_BROWSER = browserName;
         driver = CommonActions.createDriver();
         homepagePage = new HomepagePage(driver);
