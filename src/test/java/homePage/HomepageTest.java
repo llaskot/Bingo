@@ -1,11 +1,13 @@
 package homePage;
 
 import base.BaseTest;
+import base.HardAssert;
+import base.MySoftAssert;
+import base.SoftAssert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
-import org.testng.asserts.SoftAssert;
 
 import java.util.List;
 
@@ -14,7 +16,9 @@ import static constants.Constant.Urls.*;
 import static constants.Constant.Colors.*;
 
 public class HomepageTest extends BaseTest {
+    MySoftAssert my;
     SoftAssert sAssert;
+    HardAssert hAssert;
 
     @BeforeClass
     public void confirmAge(){
@@ -29,7 +33,9 @@ public class HomepageTest extends BaseTest {
         if(!driver.getCurrentUrl().equals(HOMEPAGE_URL) && !driver.getCurrentUrl().equals(HOMEPAGE_URL+"#")){
             basePage.open(HOMEPAGE_URL);
         }
-        sAssert = new SoftAssert();
+        my = new SoftAssert();
+        sAssert = (SoftAssert) my;
+        hAssert = (HardAssert) my;
     }
 
     @AfterMethod
@@ -72,7 +78,7 @@ Check PRODUCTS
         sAssert.assertEquals(actualColor, COLOR_BASE, "ERROR - Header Products dropdown has incorrect base color\n");
         homepagePage.headerProductsDdMouseHover();
         actualColor = homepagePage.headerProductsDdGetColor();
-        sAssert.assertTrue(actualColorBetweenExpected(actualColor, COLOR_MOUSE_HOVER_MIN, COLOR_MOUSE_HOVER_MAX),
+        hAssert.assertTrue(actualColorBetweenExpected(actualColor, COLOR_MOUSE_HOVER_MIN, COLOR_MOUSE_HOVER_MAX),
                 "ERROR - Header Products dropdown is moused over and has incorrect color\n");
 
 /*

@@ -3,7 +3,7 @@ package common;
 
 public class Config {
 
-    public static   String PLATFORM_AND_BROWSER = "chrome" ;
+    public static   String PLATFORM_AND_BROWSER  ;
 
     /**
      * Clear cookies and storage after each iteration

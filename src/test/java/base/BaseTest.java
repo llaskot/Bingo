@@ -12,7 +12,7 @@ import static common.Config.*;
 
 
 public class BaseTest {
-    protected static WebDriver driver;
+    protected static WebDriver driver ;
     protected Actions builder;
     protected BasePage basePage;
     protected HomepagePage homepagePage;
@@ -20,7 +20,7 @@ public class BaseTest {
 
     @BeforeTest
     @Parameters({"browserName"})
-    public void selectBrowser(@Optional("mozilla") String browserName) {
+    public void selectBrowser(@Optional("chrome") String browserName) {
         PLATFORM_AND_BROWSER = browserName;
         driver = CommonActions.createDriver();
         homepagePage = new HomepagePage(driver);
@@ -65,7 +65,7 @@ public class BaseTest {
     }
 
 
-    @AfterTest
+    @AfterTest(alwaysRun = true)
     public void clearCookiesAndLocalStorage() {
         if (CLEAN_COOKIES_AND_STORAGE) {
             JavascriptExecutor javascriptExecutor = (JavascriptExecutor) driver;

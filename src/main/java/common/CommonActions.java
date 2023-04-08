@@ -1,7 +1,9 @@
 package common;
 
+import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.Assert;
 
@@ -22,11 +24,25 @@ public class CommonActions {
 
         switch (PLATFORM_AND_BROWSER) {
             case "chrome":
-                System.setProperty("webdriver.chrome.driver","src/main/resources/chromedriver.exe");
-                driver = new ChromeDriver();
+
+                ChromeOptions chromeOptions = new ChromeOptions();
+                chromeOptions.addArguments("--remote-allow-origins=*");
+                WebDriverManager.chromedriver().setup();
+                driver = new ChromeDriver(chromeOptions);
+
+//                System.setProperty("webdriver.chrome.driver","src/main/resources/chromedriver.exe");
+//                ChromeOptions chromeOptions = new ChromeOptions();
+//                chromeOptions.addArguments("--remote-allow-origins=*");
+//                driver = new ChromeDriver();
                 break;
             case "mozilla":
-                System.setProperty("webdriver.gecko.driver","src/main/resources/geckodriver.exe");
+
+
+                WebDriverManager.firefoxdriver().setup();
+//                driver = new ChromeDriver(chromeOptions);
+
+
+//                System.setProperty("webdriver.gecko.driver","src/main/resources/geckodriver.exe");
                 driver = new FirefoxDriver();
                 break;
             default:
@@ -34,6 +50,7 @@ public class CommonActions {
         }
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(IMPLICIT_WAIT));
+        driver.manage().timeouts().scriptTimeout(Duration.ofSeconds(IMPLICIT_WAIT));
         return driver;
     }
 }
